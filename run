@@ -1,0 +1,135 @@
+#!/usr/bin/env bash
+
+#
+# It is wrapper around docker-compose with some pre-defined handy shortcuts
+#
+
+# always fail early
+set -e
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+RUN_SCRIPT=${SCRIPT_DIR}/run
+
+COMPOSE="docker-compose"
+APP_CONTAINER='php'
+
+function load_envs() {
+    local ENV_FILE=$1;
+
+    set -o allexport
+    if test -f "$SCRIPT_DIR"/"$ENV_FILE"; then
+        source "$SCRIPT_DIR"/"$ENV_FILE"
+    fi
+    set +o allexport
+}
+
+load_envs .env
+load_envs .env.docker
+
+# Run container and execute command in it
+function container_run () {
+    local ENTRYPOINT="/bin/sh -c"
+
+    if [ "$1" == "await_db" ]; then
+       ENTRYPOINT="./vendor/bin/wait-for-it.sh -t 30 ${DB_HOST}:${DB_PORT} -- $ENTRYPOINT";
+       shift;
+    fi
+
+    local ARGUMENTS="$*"
+    [[ -n "$DEBUG" ]] && ARGUMENTS="XDEBUG_SESSION=1 $ARGUMENTS"
+
+    (set -x; "$COMPOSE" run --rm --entrypoint="$ENTRYPOINT" "$APP_CONTAINER" "$ARGUMENTS")
+}
+
+function usage () {
+
+    declare -A COMMANDS=(
+        [setup        ]="setup project"
+        [restart      ]="restart project"
+        [composer     ]="shortcut for composer in $APP_CONTAINER container"
+        [console      ]="shortcut for bin/console in $APP_CONTAINER container"
+        [migrate      ]="run migrations"
+        [migrate:force]="rerun all migrations from first one"
+        [csfix        ]="run CS Fixer"
+        [phpstan      ]="run PhpStan"
+    )
+
+    echo "Usage: $(basename "$0") [COMMAND] [ARGUMENTS]"
+
+    for key in "${!COMMANDS[@]}";
+    do
+        printf "  %s\t%s\n" "$key" "${COMMANDS[$key]}"
+    done
+
+    exit 0
+}
+
+if [ "$#" -le 0 ]; then
+    usage
+fi
+
+# capture 1st arg which denotes command
+COMMAND=$1; shift 1
+
+# shorthand processing switch
+case $COMMAND in
+
+    setup)
+        cp -n .env.docker.dist .env.docker
+        $COMPOSE build "$@"
+        "${RUN_SCRIPT}" composer install
+        "${RUN_SCRIPT}" up -d
+        "${RUN_SCRIPT}" migrate
+    ;;
+
+    composer)
+        container_run "COMPOSER_MEMORY_LIMIT=-1 composer" "$@" ;;
+
+    ### console based commands
+    console)
+        container_run await_db bin/console "$@" ;;
+
+    migrate)
+        "${RUN_SCRIPT}" console doctrine:migrations:migrate --no-interaction "$@";;
+
+    migrate:force)
+        "${RUN_SCRIPT}" console doctrine:migrations:migrate --no-interaction first
+        "${RUN_SCRIPT}" console doctrine:migrations:migrate --no-interaction
+    ;;
+
+    fixtures:load)
+        "${RUN_SCRIPT}" console doctrine:fixtures:load --no-interaction ;;
+    ###
+
+    ### testing
+    test)
+        "${RUN_SCRIPT}" console --env=test cache:clear -vv
+        "${RUN_SCRIPT}" test:migrate
+        container_run vendor/bin/phpunit --testdox "$@" ;;
+
+    test:migrate)
+        "${RUN_SCRIPT}" console doctrine:migrations:migrate --no-interaction --env=test
+      ;;
+    ###
+
+    csfix)
+        container_run vendor/bin/php-cs-fixer fix -vvv "$@" ;;
+
+    phpstan)
+        container_run vendor/bin/phpstan analyse --memory-limit=512M "$@" ;;
+
+    code:check)
+        ./run csfix
+        ./run phpstan
+    ;;
+
+    up)
+        $COMPOSE up "$@"
+    ;;
+
+    restart)
+        $COMPOSE down && $COMPOSE up -d ;;
+
+    *)
+        $COMPOSE "$COMMAND" "$@" ;;
+esac

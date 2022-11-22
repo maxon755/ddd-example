@@ -1,0 +1,35 @@
+services:
+  php:
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+      args:
+        USER_UID: ${USER_UID:-1000}
+        USER_GID: ${USER_GID:-1000}
+    environment:
+        XDEBUG_MODE: ${XDEBUG_MODE}
+        XDEBUG_CLIENT_HOST: ${XDEBUG_CLIENT_HOST}
+        XDEBUG_CLIENT_PORT: ${XDEBUG_CLIENT_PORT}
+        PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/code
+    command: ["./vendor/bin/wait-for-it.sh", "-t", "30", "mysql:${DB_PORT}", "--", "rr", "serve", "-c", ".rr.dev.yaml"]
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - mysql:/var/lib/mysql
+      - .docker/mysql:/docker-entrypoint-initdb.d
+    ports:
+      - ${DATABASE_LOCAL_PORT:-3306}:3306
+
+volumes:
+  mysql:
+    driver: "local"
