@@ -1,6 +1,6 @@
 <?php
 
-namespace MRF\Infrastructure;
+namespace MRF\Infrastructure\EntryPoint\Http;
 
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;

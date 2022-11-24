@@ -7,10 +7,7 @@ services:
         USER_UID: ${USER_UID:-1000}
         USER_GID: ${USER_GID:-1000}
     environment:
-        XDEBUG_MODE: ${XDEBUG_MODE}
-        XDEBUG_CLIENT_HOST: ${XDEBUG_CLIENT_HOST}
-        XDEBUG_CLIENT_PORT: ${XDEBUG_CLIENT_PORT}
-        PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
+      - .env.docker
     ports:
       - 8080:8080
     volumes:
