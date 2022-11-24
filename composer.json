@@ -70,9 +70,11 @@
         "symfony": {
             "allow-contrib": false,
             "require": "6.1.*"
-        }
+        },
+        "public-dir": "./src/Infrastructure/EntryPoint/Http/public"
     },
     "require-dev": {
+        "phpunit/phpunit": "^9.5",
         "symfony/phpunit-bridge": "^6.1"
     }
 }
