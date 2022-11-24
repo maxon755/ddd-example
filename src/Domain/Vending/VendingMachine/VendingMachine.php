@@ -11,9 +11,9 @@ class VendingMachine
 {
     private SerialNumber $serialNumber;
 
-    private string $name;
+    private ?string $name = null;
 
-    private string $address;
+    private ?string $address = null;
 
     private ?string $operatorPhone = null;
 
@@ -40,32 +40,32 @@ class VendingMachine
         return $this->serialNumber;
     }
 
-    public function name() : string
+    public function name() : ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name) : void
+    public function setName(?string $name) : void
     {
         $this->name = $name;
     }
 
-    public function address() : string
+    public function address() : ?string
     {
         return $this->address;
     }
 
-    public function setAddress(string $address) : void
+    public function setAddress(?string $address) : void
     {
         $this->address = $address;
     }
 
-    public function operatorPhone() : string
+    public function operatorPhone() : ?string
     {
         return $this->operatorPhone;
     }
 
-    public function setOperatorPhone(string $operatorPhone) : void
+    public function setOperatorPhone(?string $operatorPhone) : void
     {
         $this->operatorPhone = $operatorPhone;
     }
