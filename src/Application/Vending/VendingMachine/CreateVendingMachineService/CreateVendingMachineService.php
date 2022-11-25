@@ -14,7 +14,7 @@ class CreateVendingMachineService
     {
     }
 
-    public function execute(CreateVendingMachineRequest $request)
+    public function execute(CreateVendingMachineRequest $request): void
     {
         $vendingMachine = VendingMachine::create(
             new SerialNumber($request->serialNumber)

@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @internal
  *
- * @coversNothing
+ * @covers \MRF\Application\Vending\VendingMachine\CreateVendingMachineService\CreateVendingMachineService
  */
 final class CreateVendingMachineTest extends TestCase
 {
@@ -21,7 +21,7 @@ final class CreateVendingMachineTest extends TestCase
         $repository = $this->createMock(VendingMachineRepository::class);
 
         $repository
-            ->expects(static::once())
+            ->expects(self::once())
             ->method('add')
         ;
 

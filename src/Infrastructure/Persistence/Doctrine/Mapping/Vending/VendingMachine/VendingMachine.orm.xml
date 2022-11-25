@@ -5,7 +5,7 @@
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <entity name="MRF\Domain\Vending\VendingMachine\VendingMachine" table="vending_machines">
-        <id name="serialNumber" length="16"/>
+        <embedded name="serialNumber" class="MRF\Domain\Vending\VendingMachine\SerialNumber" use-column-prefix="false"/>
         <field name="name" nullable="true"/>
         <field name="address" nullable="true"/>
         <field name="operatorPhone" column="operator_phone" nullable="true"/>

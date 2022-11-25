@@ -13,7 +13,7 @@ doctrine:
             VendingMachine:
                 type: xml
                 is_bundle: false
-                dir: '%kernel.project_dir%/src/Infrastructure/Persistence/Doctrine/Mapping'
+                dir: '%kernel.project_dir%/src/Infrastructure/Persistence/Doctrine/Mapping/Vending/VendingMachine'
                 prefix: 'MRF\Domain\Vending\VendingMachine'
                 alias: VendingMachine
 

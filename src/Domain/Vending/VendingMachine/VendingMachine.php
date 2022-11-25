@@ -14,11 +14,11 @@ class VendingMachine
 
     private ?string $operatorPhone = null;
 
-    private \DateTimeInterface $createdAt;
+    private \DateTimeImmutable $createdAt;
 
-    private \DateTimeInterface $activatedAt;
+    private ?\DateTimeImmutable $activatedAt = null;
 
-    private ?\DateTimeInterface $lastRequestedAt = null;
+    private ?\DateTimeImmutable $lastRequestedAt = null;
 
     private function __construct(
         SerialNumber $serialNumber,
@@ -67,27 +67,27 @@ class VendingMachine
         $this->operatorPhone = $operatorPhone;
     }
 
-    public function createdAt(): \DateTimeImmutable|\DateTimeInterface
+    public function createdAt(): \DateTimeImmutable
     {
         return $this->createdAt;
     }
 
-    public function activatedAt(): \DateTimeInterface
+    public function activatedAt(): ?\DateTimeImmutable
     {
         return $this->activatedAt;
     }
 
-    public function setActivatedAt(\DateTimeInterface $activatedAt): void
+    public function setActivatedAt(\DateTimeImmutable $activatedAt): void
     {
         $this->activatedAt = $activatedAt;
     }
 
-    public function lastRequestedAt(): \DateTimeInterface
+    public function lastRequestedAt(): ?\DateTimeImmutable
     {
         return $this->lastRequestedAt;
     }
 
-    public function setLastRequestedAt(\DateTimeInterface $lastRequestedAt): void
+    public function setLastRequestedAt(\DateTimeImmutable $lastRequestedAt): void
     {
         $this->lastRequestedAt = $lastRequestedAt;
     }

@@ -6,17 +6,18 @@ namespace MRF\Domain\Vending\VendingMachine;
 
 class SerialNumber
 {
-    public function __construct($serialNumber)
+    private string $serialNumber;
+
+    public function __construct(string $serialNumber)
     {
-        $this->setSerialNumber($serialNumber);
+        $this->validateSerialNumber($serialNumber);
+
+        $this->serialNumber = $serialNumber;
+
     }
 
-    private function setSerialNumber($serialNumber): void
+    private function validateSerialNumber(string $serialNumber): void
     {
-        if (empty($serialNumber)) {
-            throw new \InvalidArgumentException('Serial number is required.');
-        }
-
         if (!preg_match('/\d{16}/', $serialNumber)) {
             throw new \InvalidArgumentException('Invalid serial number provided.');
         }
