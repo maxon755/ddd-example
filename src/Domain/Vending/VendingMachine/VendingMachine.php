@@ -8,9 +8,9 @@ class VendingMachine
 {
     private SerialNumber $serialNumber;
 
-    private ?string $name = null;
+    private string $name;
 
-    private ?string $address = null;
+    private string $address;
 
     private ?string $operatorPhone = null;
 
@@ -22,14 +22,21 @@ class VendingMachine
 
     private function __construct(
         SerialNumber $serialNumber,
+        string $name,
+        string $address,
     ) {
         $this->serialNumber = $serialNumber;
+        $this->name = $name;
+        $this->address = $address;
         $this->createdAt = new \DateTimeImmutable();
     }
 
-    public static function create(SerialNumber $serialNumber): self
-    {
-        return new self($serialNumber);
+    public static function create(
+        SerialNumber $serialNumber,
+        string $name,
+        string $address,
+    ): self {
+        return new self($serialNumber, $name, $address);
     }
 
     public function serialNumber(): SerialNumber

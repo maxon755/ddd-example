@@ -6,8 +6,8 @@
 
     <entity name="MRF\Domain\Vending\VendingMachine\VendingMachine" table="vending_machines">
         <embedded name="serialNumber" class="MRF\Domain\Vending\VendingMachine\SerialNumber" use-column-prefix="false"/>
-        <field name="name" nullable="true"/>
-        <field name="address" nullable="true"/>
+        <field name="name"/>
+        <field name="address"/>
         <field name="operatorPhone" column="operator_phone" nullable="true"/>
         <field name="createdAt" column="created_at" type="date_immutable"/>
         <field name="activatedAt" column="activated_at" type="date_immutable" nullable="true"/>

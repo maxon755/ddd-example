@@ -13,7 +13,11 @@ class SerialNumber
         $this->validateSerialNumber($serialNumber);
 
         $this->serialNumber = $serialNumber;
+    }
 
+    public function value(): string
+    {
+        return $this->serialNumber;
     }
 
     private function validateSerialNumber(string $serialNumber): void
