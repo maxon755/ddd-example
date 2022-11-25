@@ -6,7 +6,7 @@ services:
       args:
         USER_UID: ${USER_UID:-1000}
         USER_GID: ${USER_GID:-1000}
-    environment:
+    env_file:
       - .env.docker
     ports:
       - 8080:8080

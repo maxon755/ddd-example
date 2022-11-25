@@ -26,6 +26,9 @@ function load_envs() {
 load_envs .env
 load_envs .env.docker
 
+#env
+#exit
+
 # Run container and execute command in it
 function container_run () {
     local ENTRYPOINT="/bin/sh -c"
@@ -127,9 +130,13 @@ case $COMMAND in
         $COMPOSE up "$@"
     ;;
 
+    down)
+        $COMPOSE down "$@"
+    ;;
+
     restart)
         $COMPOSE down && $COMPOSE up -d ;;
 
     *)
-        $COMPOSE "$COMMAND" "$@" ;;
+        container_run "$COMMAND" "$@" ;;
 esac
