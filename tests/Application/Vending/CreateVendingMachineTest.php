@@ -4,20 +4,26 @@ declare(strict_types=1);
 
 namespace MRF\Tests\Application\Vending;
 
-use PHPUnit\Framework\TestCase;
-use MRF\Domain\Vending\VendingMachine\VendingMachineRepository;
-use MRF\Application\Vending\VendingMachine\CreateVendingMachineService\CreateVendingMachineService;
 use MRF\Application\Vending\VendingMachine\CreateVendingMachineService\CreateVendingMachineRequest;
+use MRF\Application\Vending\VendingMachine\CreateVendingMachineService\CreateVendingMachineService;
+use MRF\Domain\Vending\VendingMachine\VendingMachineRepository;
+use PHPUnit\Framework\TestCase;
 
-class CreateVendingMachineTest extends TestCase
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
+final class CreateVendingMachineTest extends TestCase
 {
-    public function test_vending_machine_can_be_created()
+    public function testVendingMachineCanBeCreated()
     {
         $repository = $this->createMock(VendingMachineRepository::class);
 
         $repository
-            ->expects($this->once())
-            ->method('add');
+            ->expects(static::once())
+            ->method('add')
+        ;
 
         $service = new CreateVendingMachineService($repository);
 

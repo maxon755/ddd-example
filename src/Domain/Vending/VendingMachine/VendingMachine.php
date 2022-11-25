@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace MRF\Domain\Vending\VendingMachine;
 
-use DateTimeInterface;
-use DateTimeImmutable;
-
 class VendingMachine
 {
     private SerialNumber $serialNumber;
@@ -17,80 +14,80 @@ class VendingMachine
 
     private ?string $operatorPhone = null;
 
-    private DateTimeInterface $createdAt;
+    private \DateTimeInterface $createdAt;
 
-    private DateTimeInterface $activatedAt;
+    private \DateTimeInterface $activatedAt;
 
-    private ?DateTimeInterface $lastRequestedAt = null;
+    private ?\DateTimeInterface $lastRequestedAt = null;
 
     private function __construct(
         SerialNumber $serialNumber,
     ) {
         $this->serialNumber = $serialNumber;
-        $this->createdAt = new DateTimeImmutable();
+        $this->createdAt = new \DateTimeImmutable();
     }
 
-    public static function create(SerialNumber $serialNumber) : self
+    public static function create(SerialNumber $serialNumber): self
     {
         return new self($serialNumber);
     }
 
-    public function serialNumber() : SerialNumber
+    public function serialNumber(): SerialNumber
     {
         return $this->serialNumber;
     }
 
-    public function name() : ?string
+    public function name(): ?string
     {
         return $this->name;
     }
 
-    public function setName(?string $name) : void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
 
-    public function address() : ?string
+    public function address(): ?string
     {
         return $this->address;
     }
 
-    public function setAddress(?string $address) : void
+    public function setAddress(?string $address): void
     {
         $this->address = $address;
     }
 
-    public function operatorPhone() : ?string
+    public function operatorPhone(): ?string
     {
         return $this->operatorPhone;
     }
 
-    public function setOperatorPhone(?string $operatorPhone) : void
+    public function setOperatorPhone(?string $operatorPhone): void
     {
         $this->operatorPhone = $operatorPhone;
     }
 
-    public function createdAt() : DateTimeImmutable|DateTimeInterface
+    public function createdAt(): \DateTimeImmutable|\DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    public function activatedAt() : DateTimeInterface
+    public function activatedAt(): \DateTimeInterface
     {
         return $this->activatedAt;
     }
 
-    public function setActivatedAt(DateTimeInterface $activatedAt) : void
+    public function setActivatedAt(\DateTimeInterface $activatedAt): void
     {
         $this->activatedAt = $activatedAt;
     }
 
-    public function lastRequestedAt() : DateTimeInterface
+    public function lastRequestedAt(): \DateTimeInterface
     {
         return $this->lastRequestedAt;
     }
 
-    public function setLastRequestedAt(DateTimeInterface $lastRequestedAt) : void
+    public function setLastRequestedAt(\DateTimeInterface $lastRequestedAt): void
     {
         $this->lastRequestedAt = $lastRequestedAt;
     }
