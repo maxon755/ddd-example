@@ -106,8 +106,8 @@ case $COMMAND in
 
     ### testing
     test)
-        "${RUN_SCRIPT}" console --env=test cache:clear -vv
-        "${RUN_SCRIPT}" test:migrate
+#        "${RUN_SCRIPT}" console --env=test cache:clear -vv
+#        "${RUN_SCRIPT}" test:migrate
         container_run vendor/bin/phpunit --testdox "$@" ;;
 
     test:migrate)

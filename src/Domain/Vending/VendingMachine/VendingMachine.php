@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace MRF\Domain\Vending\VendingMachine;
 
+use MRF\Domain\Common\Event\DomainEventPublisher;
+
 class VendingMachine
 {
     private SerialNumber $serialNumber;
@@ -29,6 +31,10 @@ class VendingMachine
         $this->name = $name;
         $this->address = $address;
         $this->createdAt = new \DateTimeImmutable();
+
+        DomainEventPublisher::instance()->publish(
+            new VendingMachineWasCreated($serialNumber)
+        );
     }
 
     public static function create(
@@ -49,7 +55,7 @@ class VendingMachine
         return $this->name;
     }
 
-    public function setName(?string $name): void
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -59,7 +65,7 @@ class VendingMachine
         return $this->address;
     }
 
-    public function setAddress(?string $address): void
+    public function setAddress(string $address): void
     {
         $this->address = $address;
     }

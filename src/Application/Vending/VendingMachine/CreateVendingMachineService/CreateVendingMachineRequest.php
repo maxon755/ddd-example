@@ -8,8 +8,8 @@ class CreateVendingMachineRequest
 {
     public function __construct(
         public readonly string $serialNumber,
-        public readonly ?string $name = null,
-        public readonly ?string $address = null,
+        public readonly string $name,
+        public readonly string $address,
         public readonly ?string $operatorPhone = null,
     ) {
     }
