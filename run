@@ -126,17 +126,9 @@ case $COMMAND in
         ./run phpstan
     ;;
 
-    up)
-        $COMPOSE up "$@"
-    ;;
-
-    down)
-        $COMPOSE down "$@"
-    ;;
-
     restart)
         $COMPOSE down && $COMPOSE up -d ;;
 
     *)
-        container_run "$COMMAND" "$@" ;;
+        (set -x; $COMPOSE "$COMMAND" "$@") ;;
 esac

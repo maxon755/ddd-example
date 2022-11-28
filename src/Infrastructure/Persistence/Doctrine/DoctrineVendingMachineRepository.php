@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace MRF\Infrastructure\Persistence\Doctrine;
 
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use MRF\Domain\Vending\VendingMachine\SerialNumber;
 use MRF\Domain\Vending\VendingMachine\VendingMachine;
 use MRF\Domain\Vending\VendingMachine\VendingMachineRepository;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<VendingMachine>

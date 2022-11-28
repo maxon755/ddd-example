@@ -2,8 +2,10 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
+use MRF\Application\TransactionalSession;
 use MRF\Domain\Vending\VendingMachine\VendingMachineRepository;
 use MRF\Infrastructure\Persistence\Doctrine\DoctrineVendingMachineRepository;
+use MRF\Infrastructure\Transaction\DoctrineTransactionalSession;
 
 return function (ContainerConfigurator $configurator) {
     // default configuration for services in *this* file
@@ -30,4 +32,6 @@ return function (ContainerConfigurator $configurator) {
         VendingMachineRepository::class,
         DoctrineVendingMachineRepository::class
     );
+
+    $services->set(TransactionalSession::class, DoctrineTransactionalSession::class);
 };
