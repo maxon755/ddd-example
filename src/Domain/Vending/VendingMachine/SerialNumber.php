@@ -6,16 +6,12 @@ namespace MRF\Domain\Vending\VendingMachine;
 
 class SerialNumber
 {
-    private string $serialNumber;
-
-    public function __construct(string $serialNumber)
+    public function __construct(public string $serialNumber)
     {
         $this->validateSerialNumber($serialNumber);
-
-        $this->serialNumber = $serialNumber;
     }
 
-    public function value(): string
+    public function __toString(): string
     {
         return $this->serialNumber;
     }

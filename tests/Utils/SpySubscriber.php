@@ -11,12 +11,12 @@ class SpySubscriber implements DomainEventSubscriber
 {
     public DomainEvent $domainEvent;
 
-    public function handle(DomainEvent $domainEvent): void
+    public function handle(DomainEvent $event): void
     {
-        $this->domainEvent = $domainEvent;
+        $this->domainEvent = $event;
     }
 
-    public function isSubscribedTo(DomainEvent $domainEvent): bool
+    public function isSubscribedTo(DomainEvent $event): bool
     {
         return true;
     }

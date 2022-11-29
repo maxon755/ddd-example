@@ -8,7 +8,7 @@ use MRF\Domain\Common\Event\DomainEvent;
 
 class VendingMachineWasCreated extends DomainEvent
 {
-    private SerialNumber $serialNumber;
+    protected SerialNumber $serialNumber;
 
     public function __construct(SerialNumber $serialNumber)
     {
@@ -17,7 +17,7 @@ class VendingMachineWasCreated extends DomainEvent
         parent::__construct();
     }
 
-    public function serialNumber(): SerialNumber
+    public function getSerialNumber(): SerialNumber
     {
         return $this->serialNumber;
     }

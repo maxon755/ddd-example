@@ -3,7 +3,10 @@
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use MRF\Application\Vending\VendingMachine\CreateVendingMachine\CreateVendingMachineCommandHandler;
+use MRF\Domain\Common\Event\EventStore;
+use MRF\Domain\Common\Event\PersistEventSubscriber;
 use MRF\Domain\Vending\VendingMachine\VendingMachineRepository;
+use MRF\Infrastructure\Persistence\Doctrine\DoctrineEventStore;
 use MRF\Infrastructure\Persistence\Doctrine\DoctrineVendingMachineRepository;
 
 return function (ContainerConfigurator $configurator) {
@@ -31,6 +34,10 @@ return function (ContainerConfigurator $configurator) {
         VendingMachineRepository::class,
         DoctrineVendingMachineRepository::class
     );
+
+    $services->alias(EventStore::class, DoctrineEventStore::class);
+
+    $services->set(PersistEventSubscriber::class);
 
     $services->set(CreateVendingMachineCommandHandler::class)
         ->tag('tactician.handler', ['typehints' => true])

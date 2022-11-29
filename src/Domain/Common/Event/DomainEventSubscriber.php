@@ -6,7 +6,7 @@ namespace MRF\Domain\Common\Event;
 
 interface DomainEventSubscriber
 {
-    public function handle(DomainEvent $domainEvent): void;
+    public function handle(DomainEvent $event): void;
 
-    public function isSubscribedTo(DomainEvent $domainEvent): bool;
+    public function isSubscribedTo(DomainEvent $event): bool;
 }

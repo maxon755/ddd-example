@@ -22,7 +22,7 @@ class DoctrineVendingMachineRepository extends ServiceEntityRepository implement
 
     public function findBySerialNumber(SerialNumber $serialNumber): ?VendingMachine
     {
-        return $this->find($serialNumber->value());
+        return $this->find($serialNumber->serialNumber);
     }
 
     public function add(VendingMachine $vendingMachine): void

@@ -3,4 +3,5 @@ parameters:
     paths:
         - src
     doctrine:
+        ormRepositoryClass: MRF\Infrastructure\Persistence\Doctrine\DoctrineEventStore
         objectManagerLoader: object-manager.php

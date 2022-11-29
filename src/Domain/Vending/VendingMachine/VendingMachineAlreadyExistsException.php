@@ -8,7 +8,7 @@ class VendingMachineAlreadyExistsException extends \Exception
 {
     public static function create(SerialNumber $serialNumber): self
     {
-        $message = "Vending machine with {$serialNumber->value()} already exists";
+        $message = "Vending machine with {$serialNumber->serialNumber} already exists";
 
         return new self($message);
     }

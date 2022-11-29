@@ -13,7 +13,7 @@ abstract class DomainEvent
         $this->occurredAt = new \DateTimeImmutable();
     }
 
-    public function occurredAt(): \DateTimeImmutable
+    public function getOccurredAt(): \DateTimeImmutable
     {
         return $this->occurredAt;
     }

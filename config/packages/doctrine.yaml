@@ -16,6 +16,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Infrastructure/Persistence/Doctrine/Mapping/Vending/VendingMachine'
                 prefix: 'MRF\Domain\Vending\VendingMachine'
                 alias: VendingMachine
+            StoredEvent:
+                type: xml
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Infrastructure/Persistence/Doctrine/Mapping/Common/StoredEvent'
+                prefix: 'MRF\Domain\Common\Event'
+                alias: StoredEvent
 
 when@test:
     doctrine:

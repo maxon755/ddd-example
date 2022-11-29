@@ -17,7 +17,7 @@ class DomainEventPublisher
     {
     }
 
-    private function __clone(): void
+    private function __clone()
     {
     }
 
@@ -35,11 +35,11 @@ class DomainEventPublisher
         $this->subscribers[] = $subscriber;
     }
 
-    public function publish(DomainEvent $domainEvent): void
+    public function publish(DomainEvent $event): void
     {
         foreach ($this->subscribers as $subscriber) {
-            if ($subscriber->isSubscribedTo($domainEvent)) {
-                $subscriber->handle($domainEvent);
+            if ($subscriber->isSubscribedTo($event)) {
+                $subscriber->handle($event);
             }
         }
     }
