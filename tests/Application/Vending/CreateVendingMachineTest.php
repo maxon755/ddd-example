@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace MRF\Tests\Application\Vending;
 
-use MRF\Application\Vending\VendingMachine\CreateVendingMachineService\CreateVendingMachineRequest;
-use MRF\Application\Vending\VendingMachine\CreateVendingMachineService\CreateVendingMachineService;
+use MRF\Application\Vending\VendingMachine\CreateVendingMachine\CreateVendingMachineCommand;
+use MRF\Application\Vending\VendingMachine\CreateVendingMachine\CreateVendingMachineCommandHandler;
 use MRF\Domain\Vending\VendingMachine\SerialNumber;
 use MRF\Domain\Vending\VendingMachine\VendingMachine;
 use MRF\Domain\Vending\VendingMachine\VendingMachineAlreadyExistsException;
@@ -15,18 +15,18 @@ use PHPUnit\Framework\TestCase;
 /**
  * @internal
  *
- * @covers \MRF\Application\Vending\VendingMachine\CreateVendingMachineService\CreateVendingMachineService
+ * @covers \MRF\Application\Vending\VendingMachine\CreateVendingMachine\CreateVendingMachineCommandHandler
  */
 final class CreateVendingMachineTest extends TestCase
 {
     private VendingMachineRepository $repository;
 
-    private CreateVendingMachineService $service;
+    private CreateVendingMachineCommandHandler $service;
 
     protected function setUp(): void
     {
         $this->repository = $this->createMock(VendingMachineRepository::class);
-        $this->service = new CreateVendingMachineService($this->repository);
+        $this->service = new CreateVendingMachineCommandHandler($this->repository);
     }
 
     public function test_vending_machine_can_be_created()
@@ -41,7 +41,7 @@ final class CreateVendingMachineTest extends TestCase
             ->method('add')
         ;
 
-        $request = new CreateVendingMachineRequest(
+        $request = new CreateVendingMachineCommand(
             serialNumber: '1111222233334444',
             name: 'X-vending',
             address: 'Valhalla',
@@ -63,7 +63,7 @@ final class CreateVendingMachineTest extends TestCase
             ))
         ;
 
-        $request = new CreateVendingMachineRequest(
+        $request = new CreateVendingMachineCommand(
             serialNumber: '1111222233334444',
             name: 'X-vending',
             address: 'Valhalla',

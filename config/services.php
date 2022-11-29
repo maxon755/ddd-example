@@ -2,10 +2,9 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MRF\Application\TransactionalSession;
+use MRF\Application\Vending\VendingMachine\CreateVendingMachine\CreateVendingMachineCommandHandler;
 use MRF\Domain\Vending\VendingMachine\VendingMachineRepository;
 use MRF\Infrastructure\Persistence\Doctrine\DoctrineVendingMachineRepository;
-use MRF\Infrastructure\Transaction\DoctrineTransactionalSession;
 
 return function (ContainerConfigurator $configurator) {
     // default configuration for services in *this* file
@@ -33,5 +32,7 @@ return function (ContainerConfigurator $configurator) {
         DoctrineVendingMachineRepository::class
     );
 
-    $services->set(TransactionalSession::class, DoctrineTransactionalSession::class);
+    $services->set(CreateVendingMachineCommandHandler::class)
+        ->tag('tactician.handler', ['typehints' => true])
+    ;
 };

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace MRF\Application\Vending\VendingMachine\CreateVendingMachineService;
+namespace MRF\Application\Vending\VendingMachine\CreateVendingMachine;
 
-class CreateVendingMachineRequest
+class CreateVendingMachineCommand
 {
     public function __construct(
         public readonly string $serialNumber,

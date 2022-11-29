@@ -2,28 +2,25 @@
 
 declare(strict_types=1);
 
-namespace MRF\Application\Vending\VendingMachine\CreateVendingMachineService;
+namespace MRF\Application\Vending\VendingMachine\CreateVendingMachine;
 
-use MRF\Application\ApplicationService;
 use MRF\Domain\Vending\VendingMachine\SerialNumber;
 use MRF\Domain\Vending\VendingMachine\VendingMachine;
 use MRF\Domain\Vending\VendingMachine\VendingMachineAlreadyExistsException;
 use MRF\Domain\Vending\VendingMachine\VendingMachineRepository;
 
-class CreateVendingMachineService implements ApplicationService
+class CreateVendingMachineCommandHandler
 {
     public function __construct(private VendingMachineRepository $vendingMachineRepository)
     {
     }
 
     /**
-     * @param CreateVendingMachineRequest $request
-     *
      * @throws VendingMachineAlreadyExistsException
      */
-    public function execute($request): void
+    public function handle(CreateVendingMachineCommand $command): void
     {
-        $serialNumber = new SerialNumber($request->serialNumber);
+        $serialNumber = new SerialNumber($command->serialNumber);
 
         if (null !== $this->vendingMachineRepository->findBySerialNumber($serialNumber)) {
             throw VendingMachineAlreadyExistsException::create($serialNumber);
@@ -31,10 +28,10 @@ class CreateVendingMachineService implements ApplicationService
 
         $vendingMachine = VendingMachine::create(
             $serialNumber,
-            $request->name,
-            $request->address,
+            $command->name,
+            $command->address,
         );
-        $vendingMachine->setOperatorPhone($request->operatorPhone);
+        $vendingMachine->setOperatorPhone($command->operatorPhone);
 
         $this->vendingMachineRepository->add($vendingMachine);
     }
