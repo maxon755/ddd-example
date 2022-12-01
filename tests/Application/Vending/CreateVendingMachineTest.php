@@ -21,12 +21,12 @@ final class CreateVendingMachineTest extends TestCase
 {
     private VendingMachineRepository $repository;
 
-    private CreateVendingMachineCommandHandler $service;
+    private CreateVendingMachineCommandHandler $commandHandler;
 
     protected function setUp(): void
     {
         $this->repository = $this->createMock(VendingMachineRepository::class);
-        $this->service = new CreateVendingMachineCommandHandler($this->repository);
+        $this->commandHandler = new CreateVendingMachineCommandHandler($this->repository);
     }
 
     public function test_vending_machine_can_be_created()
@@ -41,14 +41,14 @@ final class CreateVendingMachineTest extends TestCase
             ->method('add')
         ;
 
-        $request = new CreateVendingMachineCommand(
+        $command = new CreateVendingMachineCommand(
             serialNumber: '1111222233334444',
             name: 'X-vending',
             address: 'Valhalla',
             operatorPhone: '4204242',
         );
 
-        $this->service->execute($request);
+        $this->commandHandler->handle($command);
     }
 
     public function test_vending_machine_can_not_be_created_with_the_same_serial_number()
@@ -63,7 +63,7 @@ final class CreateVendingMachineTest extends TestCase
             ))
         ;
 
-        $request = new CreateVendingMachineCommand(
+        $command = new CreateVendingMachineCommand(
             serialNumber: '1111222233334444',
             name: 'X-vending',
             address: 'Valhalla',
@@ -71,6 +71,6 @@ final class CreateVendingMachineTest extends TestCase
         );
 
         $this->expectException(VendingMachineAlreadyExistsException::class);
-        $this->service->execute($request);
+        $this->commandHandler->handle($command);
     }
 }

@@ -30,6 +30,6 @@ final class VendingMachineTest extends TestCase
         );
 
         static::assertInstanceOf(VendingMachineWasCreated::class, $spy->domainEvent);
-        static::assertSame($serialNumber, $spy->domainEvent->serialNumber());
+        static::assertSame($serialNumber, $spy->domainEvent->getSerialNumber());
     }
 }

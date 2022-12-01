@@ -10,11 +10,10 @@ class VendingMachineWasCreated extends DomainEvent
 {
     protected SerialNumber $serialNumber;
 
-    public function __construct(SerialNumber $serialNumber)
+    public function __construct(SerialNumber $serialNumber, ?\DateTimeImmutable $occurredAt = null)
     {
         $this->serialNumber = $serialNumber;
-
-        parent::__construct();
+        $this->occurredAt = $occurredAt ?? new \DateTimeImmutable();
     }
 
     public function getSerialNumber(): SerialNumber
