@@ -2,10 +2,12 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
+use MRF\Infrastructure\DomainEventDispatcherMiddleware;
 use MRF\Application\Vending\VendingMachine\CreateVendingMachine\CreateVendingMachineCommandHandler;
 use MRF\Domain\Common\Event\EventStore;
 use MRF\Domain\Common\Event\PersistEventSubscriber;
 use MRF\Domain\Vending\VendingMachine\VendingMachineRepository;
+use MRF\Infrastructure\DomainSubscriber\SyncVendingMachineInMemorySubscriber;
 use MRF\Infrastructure\Persistence\Doctrine\DoctrineEventStore;
 use MRF\Infrastructure\Persistence\Doctrine\DoctrineVendingMachineRepository;
 
@@ -42,4 +44,10 @@ return function (ContainerConfigurator $configurator) {
     $services->set(CreateVendingMachineCommandHandler::class)
         ->tag('tactician.handler', ['typehints' => true])
     ;
+
+    $services->set(SyncVendingMachineInMemorySubscriber::class)
+        ->arg('$redisClient', service('snc_redis.default'))
+    ;
+
+    $services->set('command-bus.middleware.dispatch-domain-events', DomainEventDispatcherMiddleware::class);
 };

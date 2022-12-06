@@ -16,6 +16,11 @@ class DomainEventPublisher
      */
     protected array $subscribers = [];
 
+    /**
+     * @var DomainEvent[]
+     */
+    protected array $events = [];
+
     private function __construct()
     {
     }
@@ -40,9 +45,16 @@ class DomainEventPublisher
 
     public function publish(DomainEvent $event): void
     {
-        foreach ($this->subscribers as $subscriber) {
-            if ($subscriber->isSubscribedTo($event)) {
-                $subscriber->handle($event);
+        $this->events[] = $event;
+    }
+
+    public function dispatchEvents(): void
+    {
+        foreach ($this->events as $event) {
+            foreach ($this->subscribers as $subscriber) {
+                if ($subscriber->isSubscribedTo($event)) {
+                    $subscriber->handle($event);
+                }
             }
         }
     }

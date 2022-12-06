@@ -50,7 +50,7 @@ class VendingMachine
         return $this->serialNumber;
     }
 
-    public function name(): ?string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -60,7 +60,7 @@ class VendingMachine
         $this->name = $name;
     }
 
-    public function address(): ?string
+    public function getAddress(): ?string
     {
         return $this->address;
     }
