@@ -27,6 +27,18 @@ services:
     ports:
       - ${DATABASE_LOCAL_PORT:-3306}:3306
 
+  redis:
+    image: redislabs/redismod
+    entrypoint:
+      redis-server /usr/local/etc/redis.conf
+    volumes:
+      - redis:/data
+      - .docker/redis/redis.conf:/usr/local/etc/redis.conf
+    ports:
+      - 6379:6379
+
 volumes:
   mysql:
+    driver: "local"
+  redis:
     driver: "local"
