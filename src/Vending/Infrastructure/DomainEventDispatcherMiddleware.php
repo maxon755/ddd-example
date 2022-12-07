@@ -9,7 +9,6 @@ use MRF\Common\Domain\Event\DomainEventPublisher;
 
 class DomainEventDispatcherMiddleware implements Middleware
 {
-
     public function execute($command, callable $next)
     {
         $next($command);

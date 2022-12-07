@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace MRF\Vending\Infrastructure\UI\Http\Controller;
 
 use League\Tactician\CommandBus;
+use MRF\Vending\Application\VendingMachine\CreateVendingMachine\CreateVendingMachineCommand;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use MRF\Vending\Application\VendingMachine\CreateVendingMachine\CreateVendingMachineCommand;
 
 class VendingMachineController extends AbstractController
 {

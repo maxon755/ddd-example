@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace MRF\Tests\Domain\Vending\VendingMachine;
+namespace MRF\Tests\Vending\Domain\VendingMachine;
 
 use MRF\Common\Domain\Event\DomainEventPublisher;
+use MRF\Tests\Utils\SpySubscriber;
 use MRF\Vending\Domain\VendingMachine\SerialNumber;
 use MRF\Vending\Domain\VendingMachine\VendingMachine;
 use MRF\Vending\Domain\VendingMachine\VendingMachineWasCreated;
-use MRF\Tests\Utils\SpySubscriber;
 use PHPUnit\Framework\TestCase;
 
 /**

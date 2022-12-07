@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MRF\Tests\Application\Vending;
+namespace MRF\Tests\Vending\Application;
 
 use MRF\Vending\Application\VendingMachine\CreateVendingMachine\CreateVendingMachineCommand;
 use MRF\Vending\Application\VendingMachine\CreateVendingMachine\CreateVendingMachineCommandHandler;
