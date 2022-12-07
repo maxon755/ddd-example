@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace MRF\Tests\Domain\Vending\VendingMachine;
 
-use MRF\Domain\Common\Event\DomainEventPublisher;
-use MRF\Domain\Vending\VendingMachine\SerialNumber;
-use MRF\Domain\Vending\VendingMachine\VendingMachine;
-use MRF\Domain\Vending\VendingMachine\VendingMachineWasCreated;
+use MRF\Common\Domain\Event\DomainEventPublisher;
+use MRF\Vending\Domain\VendingMachine\SerialNumber;
+use MRF\Vending\Domain\VendingMachine\VendingMachine;
+use MRF\Vending\Domain\VendingMachine\VendingMachineWasCreated;
 use MRF\Tests\Utils\SpySubscriber;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
  *
- * @covers \MRF\Domain\Vending\VendingMachine\VendingMachine
+ * @covers \MRF\Vending\Domain\VendingMachine\VendingMachine
  */
 final class VendingMachineTest extends TestCase
 {

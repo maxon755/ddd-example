@@ -4,9 +4,9 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use MRF\Vending\Infrastructure\DomainEventDispatcherMiddleware;
 use MRF\Vending\Application\VendingMachine\CreateVendingMachine\CreateVendingMachineCommandHandler;
-use MRF\Domain\Common\Event\EventStore;
-use MRF\Domain\Common\Event\PersistEventSubscriber;
-use MRF\Domain\Vending\VendingMachine\VendingMachineRepository;
+use MRF\Common\Domain\Event\EventStore;
+use MRF\Common\Domain\Event\PersistEventSubscriber;
+use MRF\Vending\Domain\VendingMachine\VendingMachineRepository;
 use MRF\Vending\Infrastructure\DomainSubscriber\SyncVendingMachineInMemorySubscriber;
 use MRF\Vending\Infrastructure\Persistence\Doctrine\DoctrineEventStore;
 use MRF\Vending\Infrastructure\Persistence\Doctrine\DoctrineVendingMachineRepository;

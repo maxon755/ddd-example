@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace MRF\Vending\Infrastructure\Persistence\Doctrine\Serializer;
 
-use MRF\Domain\Common\Event\DomainEvent;
-use MRF\Domain\Vending\VendingMachine\VendingMachineWasCreated;
+use MRF\Common\Domain\Event\DomainEvent;
+use MRF\Vending\Domain\VendingMachine\VendingMachineWasCreated;
 
 class VendingMachineWasCreatedSerializer implements EventSerializer
 {

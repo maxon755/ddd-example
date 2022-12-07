@@ -4,7 +4,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <embeddable name="MRF\Domain\Vending\VendingMachine\SerialNumber">
+    <embeddable name="MRF\Vending\Domain\VendingMachine\SerialNumber">
         <id name="serialNumber" column="serial_number"/>
     </embeddable>
 

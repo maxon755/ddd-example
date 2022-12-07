@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace MRF\Vending\Infrastructure;
 
-use MRF\Domain\Common\Event\DomainEventPublisher;
-use MRF\Domain\Common\Event\PersistEventSubscriber;
+use MRF\Common\Domain\Event\DomainEventPublisher;
+use MRF\Common\Domain\Event\PersistEventSubscriber;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
 

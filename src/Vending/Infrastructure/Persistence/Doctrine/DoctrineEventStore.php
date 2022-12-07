@@ -6,9 +6,9 @@ namespace MRF\Vending\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use MRF\Domain\Common\Event\DomainEvent;
-use MRF\Domain\Common\Event\EventStore;
-use MRF\Domain\Common\Event\StoredEvent;
+use MRF\Common\Domain\Event\DomainEvent;
+use MRF\Common\Domain\Event\EventStore;
+use MRF\Common\Domain\Event\StoredEvent;
 use MRF\Vending\Infrastructure\Persistence\Doctrine\Serializer\EventSerializerFactory;
 use MRF\Vending\Infrastructure\Persistence\Doctrine\Serializer\SerializerNotConfigured;
 

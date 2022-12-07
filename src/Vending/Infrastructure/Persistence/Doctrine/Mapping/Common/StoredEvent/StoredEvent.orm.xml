@@ -5,7 +5,7 @@
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
 <entity
-        name="MRF\Domain\Common\Event\StoredEvent"
+        name="MRF\Common\Domain\Event\StoredEvent"
         table="domain_events"
         repository-class="MRF\Vending\Infrastructure\Persistence\Doctrine\DoctrineEventStore"
 >

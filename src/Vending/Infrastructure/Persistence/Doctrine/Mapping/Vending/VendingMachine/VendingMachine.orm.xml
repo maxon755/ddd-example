@@ -5,11 +5,11 @@
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <entity
-            name="MRF\Domain\Vending\VendingMachine\VendingMachine"
+            name="MRF\Vending\Domain\VendingMachine\VendingMachine"
             table="vending_machines"
             repository-class="\MRF\Vending\Infrastructure\Persistence\Doctrine\DoctrineVendingMachineRepository"
     >
-        <embedded name="serialNumber" class="MRF\Domain\Vending\VendingMachine\SerialNumber" use-column-prefix="false"/>
+        <embedded name="serialNumber" class="MRF\Vending\Domain\VendingMachine\SerialNumber" use-column-prefix="false"/>
         <field name="name"/>
         <field name="address"/>
         <field name="operatorPhone" column="operator_phone" nullable="true"/>

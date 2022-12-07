@@ -6,7 +6,7 @@ namespace MRF\Vending\Infrastructure\EntryPoint\Http\Controller;
 
 use League\Tactician\CommandBus;
 use MRF\Vending\Application\VendingMachine\CreateVendingMachine\CreateVendingMachineCommand;
-use MRF\Domain\Common\Event\DomainEventPublisher;
+use MRF\Common\Domain\Event\DomainEventPublisher;
 use MRF\Vending\Infrastructure\DomainSubscriber\SyncVendingMachineInMemorySubscriber;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

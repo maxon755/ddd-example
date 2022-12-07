@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace MRF\Tests\Utils;
 
-use MRF\Domain\Common\Event\DomainEvent;
-use MRF\Domain\Common\Event\DomainEventSubscriber;
+use MRF\Common\Domain\Event\DomainEvent;
+use MRF\Common\Domain\Event\DomainEventSubscriber;
 
 class SpySubscriber implements DomainEventSubscriber
 {

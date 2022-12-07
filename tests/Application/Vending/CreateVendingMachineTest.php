@@ -6,10 +6,10 @@ namespace MRF\Tests\Application\Vending;
 
 use MRF\Vending\Application\VendingMachine\CreateVendingMachine\CreateVendingMachineCommand;
 use MRF\Vending\Application\VendingMachine\CreateVendingMachine\CreateVendingMachineCommandHandler;
-use MRF\Domain\Vending\VendingMachine\SerialNumber;
-use MRF\Domain\Vending\VendingMachine\VendingMachine;
-use MRF\Domain\Vending\VendingMachine\VendingMachineAlreadyExistsException;
-use MRF\Domain\Vending\VendingMachine\VendingMachineRepository;
+use MRF\Vending\Domain\VendingMachine\SerialNumber;
+use MRF\Vending\Domain\VendingMachine\VendingMachine;
+use MRF\Vending\Domain\VendingMachine\VendingMachineAlreadyExistsException;
+use MRF\Vending\Domain\VendingMachine\VendingMachineRepository;
 use PHPUnit\Framework\TestCase;
 
 /**

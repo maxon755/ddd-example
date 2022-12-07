@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace MRF\Vending\Infrastructure;
 
 use League\Tactician\Middleware;
-use MRF\Domain\Common\Event\DomainEventPublisher;
+use MRF\Common\Domain\Event\DomainEventPublisher;
 
 class DomainEventDispatcherMiddleware implements Middleware
 {

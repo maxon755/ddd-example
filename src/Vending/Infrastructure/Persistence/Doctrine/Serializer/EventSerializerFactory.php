@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace MRF\Vending\Infrastructure\Persistence\Doctrine\Serializer;
 
-use MRF\Domain\Vending\VendingMachine\VendingMachineWasCreated;
+use MRF\Vending\Domain\VendingMachine\VendingMachineWasCreated;
 
 class EventSerializerFactory
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MRF\Domain\Common\Event;
+namespace MRF\Common\Domain\Event;
 
 class StoredEvent
 {

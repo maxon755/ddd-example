@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace MRF\Domain\Vending\VendingMachine;
+namespace MRF\Vending\Domain\VendingMachine;
 
-use MRF\Domain\Common\Event\DomainEvent;
+use MRF\Common\Domain\Event\DomainEvent;
 
 class VendingMachineWasCreated extends DomainEvent
 {
