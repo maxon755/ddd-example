@@ -82,7 +82,7 @@
             "allow-contrib": false,
             "require": "6.1.*"
         },
-        "public-dir": "src/Vending/Infrastructure/EntryPoint/Http/public"
+        "public-dir": "public"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.13",

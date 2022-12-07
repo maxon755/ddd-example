@@ -2,13 +2,12 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MRF\Vending\Infrastructure\DomainEventDispatcherMiddleware;
-use MRF\Vending\Application\VendingMachine\CreateVendingMachine\CreateVendingMachineCommandHandler;
 use MRF\Common\Domain\Event\EventStore;
 use MRF\Common\Domain\Event\PersistEventSubscriber;
+use MRF\Common\Infrastructure\Persistence\Doctrine\DoctrineEventStore;
+use MRF\Vending\Application\VendingMachine\CreateVendingMachine\CreateVendingMachineCommandHandler;
 use MRF\Vending\Domain\VendingMachine\VendingMachineRepository;
-use MRF\Vending\Infrastructure\DomainSubscriber\SyncVendingMachineInMemorySubscriber;
-use MRF\Vending\Infrastructure\Persistence\Doctrine\DoctrineEventStore;
+use MRF\Vending\Infrastructure\DomainEventDispatcherMiddleware;
 use MRF\Vending\Infrastructure\Persistence\Doctrine\DoctrineVendingMachineRepository;
 
 return function (ContainerConfigurator $configurator) {
@@ -23,9 +22,7 @@ return function (ContainerConfigurator $configurator) {
     // this creates a service per class whose id is the fully-qualified class name
     $services->load('MRF\\', '../src/')
         ->exclude([
-            '../src/Domain',
-            '../src/Infrastructure/Kernel.php',
-            '../src/Infrastructure/EntryPoint/Http/public/index.php',
+            '../src/Vending/Domain',
         ])
     ;
 
@@ -43,10 +40,6 @@ return function (ContainerConfigurator $configurator) {
 
     $services->set(CreateVendingMachineCommandHandler::class)
         ->tag('tactician.handler', ['typehints' => true])
-    ;
-
-    $services->set(SyncVendingMachineInMemorySubscriber::class)
-        ->arg('$redisClient', service('snc_redis.default'))
     ;
 
     $services->set('command-bus.middleware.dispatch-domain-events', DomainEventDispatcherMiddleware::class);

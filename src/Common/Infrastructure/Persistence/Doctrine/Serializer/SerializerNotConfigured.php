@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MRF\Vending\Infrastructure\Persistence\Doctrine\Serializer;
+namespace MRF\Common\Infrastructure\Persistence\Doctrine\Serializer;
 
 class SerializerNotConfigured extends \Exception
 {

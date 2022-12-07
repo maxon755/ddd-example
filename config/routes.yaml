@@ -1,3 +1,3 @@
 vending.controllers:
-    resource: ../src/Vending/Infrastructure/EntryPoint/Http/Controller
+    resource: ../src/Vending/Infrastructure/UI/Http/Controller
     type: attribute

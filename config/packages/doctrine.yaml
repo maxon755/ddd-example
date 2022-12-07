@@ -13,14 +13,14 @@ doctrine:
             VendingMachine:
                 type: xml
                 is_bundle: false
-                dir: '%kernel.project_dir%/src/Vending/Infrastructure/Persistence/Doctrine/Mapping/Vending/VendingMachine'
+                dir: '%kernel.project_dir%/src/Vending/Infrastructure/Persistence/Doctrine/Mapping/VendingMachine'
                 prefix: 'MRF\Vending\Domain\VendingMachine'
                 alias: VendingMachine
             StoredEvent:
                 type: xml
                 is_bundle: false
-                dir: '%kernel.project_dir%/src/Vending/Infrastructure/Persistence/Doctrine/Mapping/Common/StoredEvent'
-                prefix: 'MRF\Vending\Domain\Common\Event'
+                dir: '%kernel.project_dir%/src/Common/Infrastructure/Persistence/Doctrine/Mapping/StoredEvent'
+                prefix: 'MRF\Common\Domain\Event'
                 alias: StoredEvent
 
 when@test:

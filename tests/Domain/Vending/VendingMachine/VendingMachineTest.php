@@ -29,6 +29,8 @@ final class VendingMachineTest extends TestCase
             'test,'
         );
 
+        DomainEventPublisher::instance()->dispatchEvents();
+
         static::assertInstanceOf(VendingMachineWasCreated::class, $spy->domainEvent);
         static::assertSame($serialNumber, $spy->domainEvent->getSerialNumber());
     }

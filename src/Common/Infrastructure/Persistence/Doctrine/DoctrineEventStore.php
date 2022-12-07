@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace MRF\Vending\Infrastructure\Persistence\Doctrine;
+namespace MRF\Common\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use MRF\Common\Domain\Event\DomainEvent;
 use MRF\Common\Domain\Event\EventStore;
 use MRF\Common\Domain\Event\StoredEvent;
-use MRF\Vending\Infrastructure\Persistence\Doctrine\Serializer\EventSerializerFactory;
-use MRF\Vending\Infrastructure\Persistence\Doctrine\Serializer\SerializerNotConfigured;
+use MRF\Common\Infrastructure\Persistence\Doctrine\Serializer\EventSerializerFactory;
+use MRF\Common\Infrastructure\Persistence\Doctrine\Serializer\SerializerNotConfigured;
 
 /**
  * @extends ServiceEntityRepository<StoredEvent>
