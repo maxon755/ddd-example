@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace MRF\Vending\Infrastructure\EntryPoint\Http\Controller;
 
 use League\Tactician\CommandBus;
-use MRF\Application\Vending\VendingMachine\CreateVendingMachine\CreateVendingMachineCommand;
+use MRF\Vending\Application\VendingMachine\CreateVendingMachine\CreateVendingMachineCommand;
 use MRF\Domain\Common\Event\DomainEventPublisher;
 use MRF\Vending\Infrastructure\DomainSubscriber\SyncVendingMachineInMemorySubscriber;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

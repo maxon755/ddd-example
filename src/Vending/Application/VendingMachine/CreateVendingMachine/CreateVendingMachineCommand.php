@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MRF\Application\Vending\VendingMachine\CreateVendingMachine;
+namespace MRF\Vending\Application\VendingMachine\CreateVendingMachine;
 
 class CreateVendingMachineCommand
 {

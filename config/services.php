@@ -3,7 +3,7 @@
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use MRF\Vending\Infrastructure\DomainEventDispatcherMiddleware;
-use MRF\Application\Vending\VendingMachine\CreateVendingMachine\CreateVendingMachineCommandHandler;
+use MRF\Vending\Application\VendingMachine\CreateVendingMachine\CreateVendingMachineCommandHandler;
 use MRF\Domain\Common\Event\EventStore;
 use MRF\Domain\Common\Event\PersistEventSubscriber;
 use MRF\Domain\Vending\VendingMachine\VendingMachineRepository;
