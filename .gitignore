@@ -5,7 +5,7 @@
 /.env.*.local
 /.env.docker
 /config/secrets/prod/prod.decrypt.private.php
-/src/Infrastructure/EntryPoint/Http/public/bundles/
+/src/Vending/Infrastructure/EntryPoint/Http/public/bundles/
 /var/
 /vendor/
 ###< symfony/framework-bundle ###

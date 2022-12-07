@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MRF\Infrastructure\Persistence\Doctrine;
+namespace MRF\Vending\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;

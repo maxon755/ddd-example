@@ -7,7 +7,7 @@
     <entity
             name="MRF\Domain\Vending\VendingMachine\VendingMachine"
             table="vending_machines"
-            repository-class="\MRF\Infrastructure\Persistence\Doctrine\DoctrineVendingMachineRepository"
+            repository-class="\MRF\Vending\Infrastructure\Persistence\Doctrine\DoctrineVendingMachineRepository"
     >
         <embedded name="serialNumber" class="MRF\Domain\Vending\VendingMachine\SerialNumber" use-column-prefix="false"/>
         <field name="name"/>

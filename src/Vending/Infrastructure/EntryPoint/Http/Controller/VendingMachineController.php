@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace MRF\Infrastructure\EntryPoint\Http\Controller;
+namespace MRF\Vending\Infrastructure\EntryPoint\Http\Controller;
 
 use League\Tactician\CommandBus;
 use MRF\Application\Vending\VendingMachine\CreateVendingMachine\CreateVendingMachineCommand;
 use MRF\Domain\Common\Event\DomainEventPublisher;
-use MRF\Infrastructure\DomainSubscriber\SyncVendingMachineInMemorySubscriber;
+use MRF\Vending\Infrastructure\DomainSubscriber\SyncVendingMachineInMemorySubscriber;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

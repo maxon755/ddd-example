@@ -1,6 +1,6 @@
 <?php
 
-use MRF\Infrastructure\EntryPoint\Http\Kernel;
+use MRF\Vending\Infrastructure\EntryPoint\Http\Kernel;
 use Symfony\Component\Dotenv\Dotenv;
 
 require __DIR__ . '/vendor/autoload.php';

@@ -7,7 +7,7 @@
 <entity
         name="MRF\Domain\Common\Event\StoredEvent"
         table="domain_events"
-        repository-class="MRF\Infrastructure\Persistence\Doctrine\DoctrineEventStore"
+        repository-class="MRF\Vending\Infrastructure\Persistence\Doctrine\DoctrineEventStore"
 >
     <id name="eventId" column="event_id" type="integer">
         <generator strategy="IDENTITY"/>

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace MRF\Domain\Common\Event;
 
 /**
- * @see \MRF\Infrastructure\BuildDomainEventPublisherSubscriber
+ * @see \MRF\Vending\Infrastructure\BuildDomainEventPublisherSubscriber
  */
 class DomainEventPublisher
 {

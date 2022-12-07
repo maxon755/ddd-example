@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MRF\Infrastructure\EntryPoint\Http\Controller;
+namespace MRF\Vending\Infrastructure\EntryPoint\Http\Controller;
 
 class A
 {

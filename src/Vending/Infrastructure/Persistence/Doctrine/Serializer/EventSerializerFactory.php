@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MRF\Infrastructure\Persistence\Doctrine\Serializer;
+namespace MRF\Vending\Infrastructure\Persistence\Doctrine\Serializer;
 
 use MRF\Domain\Vending\VendingMachine\VendingMachineWasCreated;
 

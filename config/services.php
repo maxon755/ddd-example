@@ -2,14 +2,14 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MRF\Infrastructure\DomainEventDispatcherMiddleware;
+use MRF\Vending\Infrastructure\DomainEventDispatcherMiddleware;
 use MRF\Application\Vending\VendingMachine\CreateVendingMachine\CreateVendingMachineCommandHandler;
 use MRF\Domain\Common\Event\EventStore;
 use MRF\Domain\Common\Event\PersistEventSubscriber;
 use MRF\Domain\Vending\VendingMachine\VendingMachineRepository;
-use MRF\Infrastructure\DomainSubscriber\SyncVendingMachineInMemorySubscriber;
-use MRF\Infrastructure\Persistence\Doctrine\DoctrineEventStore;
-use MRF\Infrastructure\Persistence\Doctrine\DoctrineVendingMachineRepository;
+use MRF\Vending\Infrastructure\DomainSubscriber\SyncVendingMachineInMemorySubscriber;
+use MRF\Vending\Infrastructure\Persistence\Doctrine\DoctrineEventStore;
+use MRF\Vending\Infrastructure\Persistence\Doctrine\DoctrineVendingMachineRepository;
 
 return function (ContainerConfigurator $configurator) {
     // default configuration for services in *this* file

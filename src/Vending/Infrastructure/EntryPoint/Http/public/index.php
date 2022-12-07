@@ -1,6 +1,6 @@
 <?php
 
-use MRF\Infrastructure\EntryPoint\Http\Kernel;
+use MRF\Vending\Infrastructure\EntryPoint\Http\Kernel;
 
 require_once dirname(__DIR__, 5) . '/vendor/autoload_runtime.php';
 
