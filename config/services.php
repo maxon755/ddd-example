@@ -2,7 +2,7 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MRF\Vending\Infrastructure\DomainEventDispatcherMiddleware;
+use MRF\Common\Infrastructure\DomainEventDispatcherMiddleware;
 
 return function (ContainerConfigurator $configurator) {
     $services = $configurator->services()

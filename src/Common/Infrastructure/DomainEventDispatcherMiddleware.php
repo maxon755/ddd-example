@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MRF\Vending\Infrastructure;
+namespace MRF\Common\Infrastructure;
 
 use League\Tactician\Middleware;
 use MRF\Common\Domain\Event\DomainEventPublisher;
