@@ -16,7 +16,7 @@ class VendingMachineController extends AbstractController
     public function create(CommandBus $commandBus): Response
     {
         $command = new CreateVendingMachineCommand(
-            '1111222233334445',
+            (string) random_int(1111222233334445, 9111222233334445),
             'test2',
             'test street 142',
         );

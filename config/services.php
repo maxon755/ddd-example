@@ -13,7 +13,7 @@ return function (ContainerConfigurator $configurator) {
 
     // make classes in src/ available to be used as services
     // this creates a service per class whose id is the fully-qualified class name
-    $services->load('MRF\\', '../src/')
+    $services->load('MRF\\', __DIR__ . '/../src/')
         ->exclude([
             '../src/Vending/Domain',
             '../src/Common/Infrastructure/UI/Http/Kernel.php',
@@ -22,8 +22,8 @@ return function (ContainerConfigurator $configurator) {
     ;
 
     // Imports must be after load to rewrite tags
-    $configurator->import('../src/Vending/Infrastructure/config/services.php');
-    $configurator->import('../src/Common/Infrastructure/config/services.php');
+    $configurator->import(__DIR__ . '/../src/Vending/Infrastructure/config/services.php');
+    $configurator->import(__DIR__ . '/../src/Common/Infrastructure/config/services.php');
 
     $services->set('command-bus.middleware.dispatch-domain-events', DomainEventDispatcherMiddleware::class);
 };

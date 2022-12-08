@@ -9,10 +9,14 @@ use MRF\Common\Domain\Event\DomainEventPublisher;
 
 class DomainEventDispatcherMiddleware implements Middleware
 {
+    public function __construct(private DomainEventPublisher $domainEventPublisher)
+    {
+    }
+
     public function execute($command, callable $next)
     {
         $next($command);
 
-        DomainEventPublisher::instance()->dispatchEvents();
+        $this->domainEventPublisher->dispatchEvents();
     }
 }
