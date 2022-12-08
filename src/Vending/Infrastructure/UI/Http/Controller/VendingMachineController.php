@@ -23,6 +23,6 @@ class VendingMachineController extends AbstractController
 
         $commandBus->handle($command);
 
-        return new Response();
+        return new Response('Vending machine created');
     }
 }

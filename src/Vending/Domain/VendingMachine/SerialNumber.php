@@ -6,6 +6,8 @@ namespace MRF\Vending\Domain\VendingMachine;
 
 class SerialNumber
 {
+    public const LENGTH = 16;
+    
     public function __construct(public string $serialNumber)
     {
         $this->validateSerialNumber($serialNumber);
@@ -18,7 +20,7 @@ class SerialNumber
 
     private function validateSerialNumber(string $serialNumber): void
     {
-        if (!preg_match('/\d{16}/', $serialNumber)) {
+        if (!preg_match('/\d{' . self::LENGTH . '}/', $serialNumber)) {
             throw new \InvalidArgumentException('Invalid serial number provided.');
         }
     }

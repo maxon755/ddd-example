@@ -9,7 +9,7 @@
             table="vending_machines"
             repository-class="\MRF\Vending\Infrastructure\Persistence\Doctrine\DoctrineVendingMachineRepository"
     >
-        <embedded name="serialNumber" class="MRF\Vending\Domain\VendingMachine\SerialNumber" use-column-prefix="false"/>
+        <id name="serialNumber" type="serial_number"/>
         <field name="name"/>
         <field name="address"/>
         <field name="operatorPhone" column="operator_phone" nullable="true"/>
