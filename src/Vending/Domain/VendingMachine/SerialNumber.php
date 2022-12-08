@@ -7,7 +7,7 @@ namespace MRF\Vending\Domain\VendingMachine;
 class SerialNumber
 {
     public const LENGTH = 16;
-    
+
     public function __construct(public string $serialNumber)
     {
         $this->validateSerialNumber($serialNumber);

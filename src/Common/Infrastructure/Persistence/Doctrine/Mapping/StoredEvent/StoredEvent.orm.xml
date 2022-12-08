@@ -14,6 +14,6 @@
     </id>
     <field name="eventType"/>
     <field name="body" type="json"/>
-    <field name="occurredAt" column="occurred_at" type="datetime_immutable"/>
+    <field name="occurredAt" type="datetime_immutable"/>
 </entity>
 </doctrine-mapping>

@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace MRF\Vending\Infrastructure\Persistence\Doctrine;
 
-use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\Type;
 use MRF\Vending\Domain\VendingMachine\SerialNumber;
 
 class SerialNumberType extends Type
 {
-
     public function getSQLDeclaration(array $column, AbstractPlatform $platform)
     {
         return $platform->getStringTypeDeclarationSQL([
@@ -38,5 +37,4 @@ class SerialNumberType extends Type
     {
         return new SerialNumber($value);
     }
-
 }
