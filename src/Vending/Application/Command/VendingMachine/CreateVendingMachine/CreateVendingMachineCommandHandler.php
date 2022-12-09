@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MRF\Vending\Application\VendingMachine\CreateVendingMachine;
+namespace MRF\Vending\Application\Command\VendingMachine\CreateVendingMachine;
 
 use MRF\Vending\Domain\VendingMachine\SerialNumber;
 use MRF\Vending\Domain\VendingMachine\VendingMachine;

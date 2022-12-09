@@ -2,7 +2,7 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MRF\Vending\Application\VendingMachine\CreateVendingMachine\CreateVendingMachineCommandHandler;
+use MRF\Vending\Application\Command\VendingMachine\CreateVendingMachine\CreateVendingMachineCommandHandler;
 use MRF\Vending\Domain\VendingMachine\VendingMachineRepository;
 use MRF\Vending\Infrastructure\Persistence\Doctrine\DoctrineVendingMachineRepository;
 

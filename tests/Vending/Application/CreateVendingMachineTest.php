@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace MRF\Tests\Vending\Application;
 
-use MRF\Vending\Application\VendingMachine\CreateVendingMachine\CreateVendingMachineCommand;
-use MRF\Vending\Application\VendingMachine\CreateVendingMachine\CreateVendingMachineCommandHandler;
+use MRF\Vending\Application\Command\VendingMachine\CreateVendingMachine\CreateVendingMachineCommand;
+use MRF\Vending\Application\Command\VendingMachine\CreateVendingMachine\CreateVendingMachineCommandHandler;
 use MRF\Vending\Domain\VendingMachine\SerialNumber;
 use MRF\Vending\Domain\VendingMachine\VendingMachine;
 use MRF\Vending\Domain\VendingMachine\VendingMachineAlreadyExistsException;
@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @internal
  *
- * @covers \MRF\Vending\Application\VendingMachine\CreateVendingMachine\CreateVendingMachineCommandHandler
+ * @covers \MRF\Vending\Application\Command\VendingMachine\CreateVendingMachine\CreateVendingMachineCommandHandler
  */
 final class CreateVendingMachineTest extends TestCase
 {

@@ -2,7 +2,11 @@
 
 declare(strict_types=1);
 
-namespace MRF\Common\Domain\Event;
+namespace MRF\Common\Application\Event;
+
+use MRF\Common\Domain\Event\DomainEvent;
+use MRF\Common\Domain\Event\DomainEventSubscriber;
+use MRF\Common\Domain\Event\EventStore;
 
 class PersistEventSubscriber implements DomainEventSubscriber
 {
