@@ -45,12 +45,12 @@ class VendingMachine
         return new self($serialNumber, $name, $address);
     }
 
-    public function serialNumber(): SerialNumber
+    public function getSerialNumber(): SerialNumber
     {
         return $this->serialNumber;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -60,7 +60,7 @@ class VendingMachine
         $this->name = $name;
     }
 
-    public function getAddress(): ?string
+    public function getAddress(): string
     {
         return $this->address;
     }

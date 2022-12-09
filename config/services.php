@@ -22,8 +22,8 @@ return function (ContainerConfigurator $configurator) {
     ;
 
     // Imports must be after load to rewrite tags
-    $configurator->import(__DIR__ . '/app/vending.php');
     $configurator->import(__DIR__ . '/app/common.php');
+    $configurator->import(__DIR__ . '/app/vending.php');
 
     $services->set('command-bus.middleware.dispatch-domain-events', DomainEventDispatcherMiddleware::class);
 };
