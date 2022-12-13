@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace MRF\Vending\Infrastructure\Persistence\Redis;
 
-use MRF\Vending\Application\Query\VendingMachineReadModelRepository;
+use MRF\Vending\Application\Event\VendingMachineReadStorageWriter;
 
-class RedisVendingMachineReadModelRepository implements VendingMachineReadModelRepository
+class RedisVendingMachineReadStorageWriter implements VendingMachineReadStorageWriter
 {
     public function __construct(private \Redis $redisClient)
     {

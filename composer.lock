@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0cce5f2cf671ee3e0d7dea799668c46c",
+    "content-hash": "3238b8b9780486c73f318a45689e3593",
     "packages": [
         {
             "name": "baldinof/roadrunner-bundle",
@@ -2000,6 +2000,88 @@
             "time": "2021-11-14T15:08:02+00:00"
         },
         {
+            "name": "macfja/redisearch",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MacFJA/php-redisearch.git",
+                "reference": "ec9dec1dd34c07011224eec7ae3057e87ceb2bd4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MacFJA/php-redisearch/zipball/ec9dec1dd34c07011224eec7ae3057e87ceb2bd4",
+                "reference": "ec9dec1dd34c07011224eec7ae3057e87ceb2bd4",
+                "shasum": ""
+            },
+            "require": {
+                "composer/semver": "^3.2",
+                "ext-intl": "*",
+                "php": "^7.2 || ^8.0",
+                "respect/validation": "^2.0"
+            },
+            "require-dev": {
+                "amphp/redis": "^1.0",
+                "cheprasov/php-redis-client": "^1.10",
+                "colinmollenhour/credis": "^1.12",
+                "enlightn/security-checker": "^1.9",
+                "ergebnis/composer-normalize": "^2.13",
+                "ext-mbstring": "*",
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "geometria-lab/rediska": "^0.5.10",
+                "insolita/unused-scanner": "^2.3",
+                "php-parallel-lint/php-parallel-lint": "^1.3",
+                "phpmd/phpmd": "^2.10",
+                "phpstan/phpstan": "^1.2.0",
+                "phpunit/phpunit": "^8.5 || ^9.3",
+                "predis/predis": "^1.1 || ^2.0",
+                "ptrofimov/tinyredisclient": "^1.1",
+                "redisent/redisent": "dev-master",
+                "roave/security-advisories": "dev-latest",
+                "rskuipers/php-assumptions": "^0.8.0",
+                "sebastian/phpcpd": "^4.1 || ^6.0",
+                "ukko/phpredis-phpdoc": "dev-master",
+                "vimeo/psalm": "^4.7"
+            },
+            "suggest": {
+                "amphp/redis": "To use AmpPhp implementation",
+                "cheprasov/php-redis-client": "To use Cheprasov implementation",
+                "colinmollenhour/credis": "To use Credis implementation",
+                "ext-phpiredis": "To use Phpiredis extension implementation",
+                "ext-redis": "To use Phpredis extension implementation",
+                "geometria-lab/rediska": "To use Rediska implementation",
+                "predis/predis": "To use Predis implementation",
+                "ptrofimov/tinyredisclient": "To use TinyRedisClient implementation",
+                "redisent/redisent": "To use Redisent implementation"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MacFJA\\RediSearch\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "MacFJA"
+                }
+            ],
+            "description": "PHP Client for RediSearch",
+            "keywords": [
+                "redis",
+                "redisearch",
+                "search engine",
+                "suggestion"
+            ],
+            "support": {
+                "issues": "https://github.com/MacFJA/php-redisearch/issues",
+                "source": "https://github.com/MacFJA/php-redisearch"
+            },
+            "time": "2022-08-13T22:10:58+00:00"
+        },
+        {
             "name": "phpdocumentor/reflection-common",
             "version": "2.2.0",
             "source": {
@@ -2518,6 +2600,130 @@
                 "source": "https://github.com/php-fig/log/tree/3.0.0"
             },
             "time": "2021-07-14T16:46:02+00:00"
+        },
+        {
+            "name": "respect/stringifier",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Respect/Stringifier.git",
+                "reference": "e55af3c8aeaeaa2abb5fa47a58a8e9688cc23b59"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Respect/Stringifier/zipball/e55af3c8aeaeaa2abb5fa47a58a8e9688cc23b59",
+                "reference": "e55af3c8aeaeaa2abb5fa47a58a8e9688cc23b59",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.8",
+                "malukenho/docheader": "^0.1.7",
+                "phpunit/phpunit": "^6.4"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/stringify.php"
+                ],
+                "psr-4": {
+                    "Respect\\Stringifier\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Respect/Stringifier Contributors",
+                    "homepage": "https://github.com/Respect/Stringifier/graphs/contributors"
+                }
+            ],
+            "description": "Converts any value to a string",
+            "homepage": "http://respect.github.io/Stringifier/",
+            "keywords": [
+                "respect",
+                "stringifier",
+                "stringify"
+            ],
+            "support": {
+                "issues": "https://github.com/Respect/Stringifier/issues",
+                "source": "https://github.com/Respect/Stringifier/tree/0.2.0"
+            },
+            "time": "2017-12-29T19:39:25+00:00"
+        },
+        {
+            "name": "respect/validation",
+            "version": "2.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Respect/Validation.git",
+                "reference": "4c21a7ffc9a4915673cb2c2843963919e664e627"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/4c21a7ffc9a4915673cb2c2843963919e664e627",
+                "reference": "4c21a7ffc9a4915673cb2c2843963919e664e627",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3 || ^8.0",
+                "respect/stringifier": "^0.2.0",
+                "symfony/polyfill-mbstring": "^1.2"
+            },
+            "require-dev": {
+                "egulias/email-validator": "^3.0",
+                "malukenho/docheader": "^0.1",
+                "mikey179/vfsstream": "^1.6",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-deprecation-rules": "^0.12",
+                "phpstan/phpstan-phpunit": "^0.12",
+                "phpunit/phpunit": "^9.3",
+                "psr/http-message": "^1.0",
+                "respect/coding-standard": "^3.0",
+                "squizlabs/php_codesniffer": "^3.5",
+                "symfony/validator": "^3.0||^4.0",
+                "zendframework/zend-validator": "^2.1"
+            },
+            "suggest": {
+                "egulias/email-validator": "Strict (RFC compliant) email validation",
+                "ext-bcmath": "Arbitrary Precision Mathematics",
+                "ext-fileinfo": "File Information",
+                "ext-mbstring": "Multibyte String Functions",
+                "symfony/validator": "Use Symfony validator through Respect\\Validation",
+                "zendframework/zend-validator": "Use Zend Framework validator through Respect\\Validation"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Respect\\Validation\\": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Respect/Validation Contributors",
+                    "homepage": "https://github.com/Respect/Validation/graphs/contributors"
+                }
+            ],
+            "description": "The most awesome validation engine ever created for PHP",
+            "homepage": "http://respect.github.io/Validation/",
+            "keywords": [
+                "respect",
+                "validation",
+                "validator"
+            ],
+            "support": {
+                "issues": "https://github.com/Respect/Validation/issues",
+                "source": "https://github.com/Respect/Validation/tree/2.2.3"
+            },
+            "time": "2021-03-19T14:12:45+00:00"
         },
         {
             "name": "snc/redis-bundle",
@@ -8481,7 +8687,8 @@
     "platform": {
         "php": ">=8.1",
         "ext-ctype": "*",
-        "ext-iconv": "*"
+        "ext-iconv": "*",
+        "ext-redis": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"

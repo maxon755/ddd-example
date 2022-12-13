@@ -6,7 +6,7 @@ use MRF\Vending\Application\Command\VendingMachine\CreateVendingMachine\CreateVe
 use MRF\Vending\Application\Query\VendingMachineReadModelRepository;
 use MRF\Vending\Domain\VendingMachine\VendingMachineRepository;
 use MRF\Vending\Infrastructure\Persistence\Doctrine\DoctrineVendingMachineRepository;
-use MRF\Vending\Infrastructure\Persistence\Redis\RedisVendingMachineReadModelRepository;
+use MRF\Vending\Infrastructure\Persistence\Redis\RedisVendingMachineReadStorageWriter;
 
 return function (ContainerConfigurator $configurator) {
     $services = $configurator->services()
@@ -22,11 +22,11 @@ return function (ContainerConfigurator $configurator) {
 
     $services->alias(
         VendingMachineReadModelRepository::class,
-        RedisVendingMachineReadModelRepository::class
+        RedisVendingMachineReadStorageWriter::class
     );
 
-    $services->set(RedisVendingMachineReadModelRepository::class)
-        ->args([service('snc_redis.default')])
+    $services->set(RedisVendingMachineReadStorageWriter::class)
+        ->args([service('redis.client')])
     ;
 
     $services->set(CreateVendingMachineCommandHandler::class)

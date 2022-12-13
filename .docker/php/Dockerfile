@@ -7,7 +7,7 @@ ENV TERM xterm-256color
 
 ENV PROJECT_DIR="/code"
 
-RUN apk add -U shadow libzip-dev git unzip bash
+RUN apk add -U shadow libzip-dev git unzip bash icu-dev
 
 RUN usermod -u "$USER_UID" www-data
 RUN groupmod -g "$USER_GID" www-data
@@ -16,7 +16,8 @@ RUN mkdir "$PROJECT_DIR" && chown www-data:www-data "$PROJECT_DIR"
 RUN chown -R www-data:www-data /var/www
 
 # extensions
-RUN docker-php-ext-install pdo pdo_mysql zip sockets
+RUN docker-php-ext-install pdo pdo_mysql zip sockets \
+    && docker-php-ext-configure intl && docker-php-ext-install intl
 
 # redis
 RUN apk add --no-cache pcre-dev $PHPIZE_DEPS \

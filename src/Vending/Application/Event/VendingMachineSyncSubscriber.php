@@ -6,7 +6,6 @@ namespace MRF\Vending\Application\Event;
 
 use MRF\Common\Domain\Event\DomainEvent;
 use MRF\Common\Domain\Event\DomainEventSubscriber;
-use MRF\Vending\Application\Query\VendingMachineReadModelRepository;
 use MRF\Vending\Domain\VendingMachine\VendingMachineRepository;
 use MRF\Vending\Domain\VendingMachine\VendingMachineWasCreated;
 
@@ -14,7 +13,7 @@ class VendingMachineSyncSubscriber implements DomainEventSubscriber
 {
     public function __construct(
         private VendingMachineRepository $vendingMachineRepository,
-        private VendingMachineReadModelRepository $vendingMachineReadRepository,
+        private VendingMachineReadStorageWriter $vendingMachineReadStorageWriter,
     ) {
     }
 
@@ -39,7 +38,7 @@ class VendingMachineSyncSubscriber implements DomainEventSubscriber
             'address' => $vendingMachine->getAddress(),
         ];
 
-        $this->vendingMachineReadRepository->add((string) $serialNumber, $data);
+        $this->vendingMachineReadStorageWriter->add((string) $serialNumber, $data);
     }
 
     public function isSubscribedTo(DomainEvent $event): bool
