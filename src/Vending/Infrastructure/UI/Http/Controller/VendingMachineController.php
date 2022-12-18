@@ -6,7 +6,10 @@ namespace MRF\Vending\Infrastructure\UI\Http\Controller;
 
 use League\Tactician\CommandBus;
 use MRF\Vending\Application\Command\VendingMachine\CreateVendingMachine\CreateVendingMachineCommand;
+use MRF\Vending\Application\Query\VendingMachine\FindAllVendingMachinesQuery;
+use MRF\Vending\Application\Query\VendingMachine\FindAllVendingMachinesQueryHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -24,5 +27,13 @@ class VendingMachineController extends AbstractController
         $commandBus->handle($command);
 
         return new Response('Vending machine created');
+    }
+
+    #[Route('/api/vending-machines', name: 'vending-machine.index', methods: ['GET'])]
+    public function index(FindAllVendingMachinesQueryHandler $queryHandler): Response
+    {
+        $vendingMachines = $queryHandler->handle(new FindAllVendingMachinesQuery());
+
+        return new JsonResponse($vendingMachines);
     }
 }

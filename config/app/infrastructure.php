@@ -2,7 +2,6 @@
 
 use MacFJA\RediSearch\Redis\Client;
 use MacFJA\RediSearch\Redis\Client\ClientFacade;
-use MRF\Vending\Infrastructure\Persistence\Redis\RedisVendingMachineReadStorageWriter;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
@@ -22,7 +21,4 @@ return function (ContainerConfigurator $configurator) {
         ->factory([service('redis.redisearch.client_facade'), 'getClient'])
         ->args([service('redis.client')])
     ;
-
-//    $services->set(RedisVendingMachineReadStorageWriter::class)
-//        ->args([service('redis.redisearch.client')])
 };
