@@ -2,6 +2,7 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
+use MRF\Vending\Infrastructure\UI\CLI\CreateVendingMachineRedisearchIndex;
 use MRF\Vending\Application\Command\VendingMachine\CreateVendingMachine\CreateVendingMachineCommandHandler;
 use MRF\Vending\Application\Query\VendingMachineReadModelRepository;
 use MRF\Vending\Domain\VendingMachine\VendingMachineRepository;
@@ -34,5 +35,10 @@ return function (ContainerConfigurator $configurator) {
 
     $services->set(CreateVendingMachineCommandHandler::class)
         ->tag('tactician.handler', ['typehints' => true])
+    ;
+
+    // console
+    $services->set(CreateVendingMachineRedisearchIndex::class)
+        ->args([service('redis.redisearch.client')])
     ;
 };
