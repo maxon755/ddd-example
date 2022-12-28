@@ -2,13 +2,13 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MRF\Vending\Infrastructure\UI\CLI\CreateVendingMachineRedisearchIndex;
 use MRF\Vending\Application\Command\VendingMachine\CreateVendingMachine\CreateVendingMachineCommandHandler;
 use MRF\Vending\Application\Query\VendingMachineReadModelRepository;
 use MRF\Vending\Domain\VendingMachine\VendingMachineRepository;
 use MRF\Vending\Infrastructure\Persistence\Doctrine\DoctrineVendingMachineRepository;
 use MRF\Vending\Infrastructure\Persistence\Redis\RedisVendingMachineReadModelRepository;
 use MRF\Vending\Infrastructure\Persistence\Redis\RedisVendingMachineReadStorageWriter;
+use MRF\Vending\Infrastructure\UI\CLI\CreateVendingMachineRedisearchIndex;
 
 return function (ContainerConfigurator $configurator) {
     $services = $configurator->services()
@@ -39,6 +39,6 @@ return function (ContainerConfigurator $configurator) {
 
     // console
     $services->set(CreateVendingMachineRedisearchIndex::class)
-        ->args([service('redis.redisearch.client')])
+        ->args([service('redis.client')])
     ;
 };

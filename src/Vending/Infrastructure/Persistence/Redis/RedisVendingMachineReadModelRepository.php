@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace MRF\Vending\Infrastructure\Persistence\Redis;
 
 use MacFJA\RediSearch\Redis\Client;
+use MacFJA\RediSearch\Redis\Command\Search;
+use MacFJA\RediSearch\Redis\Response\PaginatedResponse;
 use MacFJA\RediSearch\Redis\Response\SearchResponseItem;
 use MRF\Vending\Application\Query\VendingMachineReadModelRepository;
 
@@ -19,14 +21,14 @@ class RedisVendingMachineReadModelRepository implements VendingMachineReadModelR
      */
     public function findAll(): array
     {
-        $search = new \MacFJA\RediSearch\Redis\Command\Search();
+        $search = new Search();
 
         $search
             ->setIndex('idx:vending_machines')
             ->setQuery('*')
         ;
 
-        /** @var iterable $response */
+        /** @var PaginatedResponse $response */
         $response = $this->redisearchClient->execute($search);
 
         $vendingMachines = [];
@@ -34,7 +36,12 @@ class RedisVendingMachineReadModelRepository implements VendingMachineReadModelR
         foreach ($response as $items) {
             /** @var SearchResponseItem $item */
             foreach ($items as $item) {
-                $vendingMachines[] = $item->getFields();
+                $rawData = (string) $item->getFields()['$'];
+
+                /** @var array{serial_number: string, name:string, address:string} $decodedData */
+                $decodedData = json_decode($rawData);
+
+                $vendingMachines[] = $decodedData;
             }
         }
 

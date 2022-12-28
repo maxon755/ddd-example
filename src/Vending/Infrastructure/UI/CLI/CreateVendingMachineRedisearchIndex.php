@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace MRF\Vending\Infrastructure\UI\CLI;
 
-use MacFJA\RediSearch\Index;
-use MacFJA\RediSearch\IndexBuilder;
-use MacFJA\RediSearch\Redis\Client;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -15,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 #[AsCommand(name: 'vending-machine:redis:setup')]
 class CreateVendingMachineRedisearchIndex extends Command
 {
-    public function __construct(private Client $client)
+    public function __construct(private \Redis $client)
     {
         parent::__construct();
     }
@@ -24,18 +21,28 @@ class CreateVendingMachineRedisearchIndex extends Command
     {
         $indexName = 'idx:vending_machines';
 
-        $index = new Index($indexName, $this->client);
-        $index->delete();
+        try {
+            $this->client->rawCommand('FT.DROPINDEX', $indexName);
+        } catch (\RedisException $exception) {
+            if ('Unknown Index name' !== $exception->getMessage()) {
+                $output->writeln("<error>{$exception->getMessage()}</error>");
 
-        $indexBuilder = new IndexBuilder();
-        $indexBuilder
-            ->setIndex('idx:vending_machines')
-            ->setPrefixes(['vending_machine:'])
-            ->addTextField('serial_number')
-            ->addTextField('name')
-            ->addTextField('address')
-            ->create($this->client)
-        ;
+                return self::FAILURE;
+            }
+        }
+
+        $arguments = explode(
+            ' ',
+            "{$indexName} ON JSON " .
+                'PREFIX 1 vending_machine: ' .
+                'SCHEMA ' .
+                '$.serial_number AS serial_number TEXT ' .
+                '$.name AS name TEXT ' .
+                '$.address AS address TEXT'
+        );
+
+//        FT.CREATE userIdx ON JSON SCHEMA $.user.name AS name TEXT $.user.email AS email  TAG
+        $this->client->rawCommand('FT.CREATE', ...$arguments);
 
         $output->writeln("<info>Index {$indexName} was successfully created</info>");
 

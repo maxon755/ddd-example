@@ -27,7 +27,7 @@ class VendingMachineSyncSubscriber implements DomainEventSubscriber
         $vendingMachine = $this->vendingMachineRepository->findBySerialNumber($serialNumber);
 
         if (null === $vendingMachine) {
-            // TODO: implement serialization create appropriate exception
+            // TODO: create appropriate exception
             throw new \Exception('Vending machine not found');
         }
 
