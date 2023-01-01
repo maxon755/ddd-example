@@ -29,7 +29,7 @@ class DoctrineEventStore extends ServiceEntityRepository implements EventStore
      */
     public function append(DomainEvent $event): void
     {
-        $serializer = $this->serializerFactory->getSerializerForEvent($event::class);
+        $serializer = $this->serializerFactory->getSerializerForEvent($event);
 
         $storedEvent = new StoredEvent(
             $event::class,

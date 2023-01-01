@@ -18,6 +18,7 @@ class VendingMachineWasCreatedSerializer implements EventSerializer
     {
         return json_encode([
             'serial_number' => $event->getSerialNumber()->serialNumber,
+            'occured_at' => $event->getOccurredAt(),
         ], JSON_THROW_ON_ERROR);
     }
 }

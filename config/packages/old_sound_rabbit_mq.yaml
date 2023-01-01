@@ -1,0 +1,26 @@
+old_sound_rabbit_mq:
+    connections:
+        default:
+            url: '%env(RABBITMQ_URL)%'
+    producers:
+        domain_bus:
+            connection:       default
+            exchange_options: { name: 'ex.domain_bus', type: topic }
+    consumers:
+        test:
+            connection:       default
+            exchange_options: { name: 'ex.domain_bus', type: topic }
+            queue_options:
+                name: 'q.test_consumer.vending_machine.created'
+                routing_keys:
+                    - 'vending_machine.created'
+                arguments:
+                    x-dead-letter-exchange: ['S', 'ex.failed_messages']
+                    x-dead-letter-routing-key: ['S', 'q.failed_messages']
+            callback: MRF\Common\Infrastructure\UI\Consumer\TestConsumer
+
+        failed_messages:
+            connection: default
+            exchange_options: { name: 'ex.failed_messages', type: fanout }
+            queue_options: { name: 'q.failed_messages' }
+            callback: MRF\Common\Infrastructure\UI\Consumer\FailedMessagesConsumer

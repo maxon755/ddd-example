@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MRF\Common\Infrastructure\Persistence\Doctrine\Serializer;
 
+use MRF\Common\Domain\Event\DomainEvent;
 use MRF\Vending\Domain\VendingMachine\VendingMachineWasCreated;
 
 class EventSerializerFactory
@@ -18,8 +19,10 @@ class EventSerializerFactory
     /**
      * @throws SerializerNotConfigured
      */
-    public function getSerializerForEvent(string $domainEventClass): EventSerializer
+    public function getSerializerForEvent(DomainEvent $event): EventSerializer
     {
+        $domainEventClass = \get_class($event);
+
         if (!\array_key_exists($domainEventClass, $this->serializersMap)) {
             throw SerializerNotConfigured::create($domainEventClass);
         }

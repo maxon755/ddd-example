@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace MRF\Common\Domain\Event;
 
-/**
- * @see \MRF\Vending\Infrastructure\BuildDomainEventPublisherSubscriber
- */
 class DomainEventPublisher
 {
     protected static ?self $instance = null;
